@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from time import sleep
 
 search_array = [
-    "apple", "macbook pro", "dell", "ubuntu", "raspberry pi", "system76", "microsoft", "logitech", "bestbuy", "amazon"
+    "apple", "macbook pro", "dell", "ubuntu", "raspberry pi", "system76", "microsoft", "logitech", "bestbuy", "amazon",
     "Canadian news", "Top stories", "Canada", "World", "Entertainment", "Sci/Tech", "Business", "Politics", "Sports", "Lifestyle",
     "stock", "indeed", "sony", "part time job", "stock market", "hello world", "microsoft", "google", "travel", "volkswagen"
 ]
@@ -43,8 +43,9 @@ def main():
     cmd = raw_input()
     if cmd == "y" or cmd == "Y":
         open_tabs(browser)
+        print("Search Completed. Script ends.")
     else:
-        print()
+        print("Script ends.")
 
 
 if __name__ == "__main__":
