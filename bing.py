@@ -1,12 +1,12 @@
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.keys import Keys
-from time import sleep
+import time
 
 search_array = [
-    "apple", "macbook pro", "dell", "ubuntu", "raspberry pi", "system76", "microsoft", "logitech", "bestbuy", "amazon",
+    "apple", "macbook pro", "dell", "ubuntu", "raspberry pi", "system76", "microsoft", "google", "bestbuy", "amazon",
     "Canadian news", "Top stories", "Canada", "World", "Entertainment", "Sci/Tech", "Business", "Politics", "Sports", "Lifestyle",
-    "stock", "indeed", "sony", "part time job", "stock market", "hello world", "microsoft", "google", "travel", "volkswagen"
+    "stock", "indeed", "sony", "part time job", "stock market", "hello world", "nikon", "logitech", "travel", "volkswagen"
 ]
 
 
@@ -14,9 +14,9 @@ def search(driver, key):
     print("Seaching " + key + "...")
     search_bar = driver.find_element_by_id("sb_form_q")
     search_bar.send_keys(key)
-    sleep(1)
+    time.sleep(2)
     search_bar.send_keys(Keys.ENTER)
-    sleep(2)
+    time.sleep(4)
 
 
 def open_tabs(driver):
@@ -32,6 +32,7 @@ def open_tabs(driver):
 
 
 def main():
+    start_time = time.time()
     chrome_options = ChromeOptions()
     chrome_options.add_argument("--incognito")
     chrome_options.add_experimental_option("detach", True)
@@ -43,7 +44,8 @@ def main():
     cmd = raw_input()
     if cmd == "y" or cmd == "Y":
         open_tabs(browser)
-        print("Search Completed. Script ends.")
+        elapsed_time = time.time() - start_time
+        print("Search Completed in " + str(elapsed_time) + "s. Script ends.")
     else:
         print("Script ends.")
 
