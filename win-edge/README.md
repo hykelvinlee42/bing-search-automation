@@ -1,5 +1,5 @@
 # bing-search-automation
-The selenium python based automation tool is for completing the Microsoft Rewards daily challenge.
+This Python automation tool uses Selenium for completing the Microsoft Rewards daily challenge.
 ## Getting Started
 ### Prerequisites
 Check edge browser version by entering edge://version in the browser search bar.
