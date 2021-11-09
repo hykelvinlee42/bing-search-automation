@@ -4,8 +4,8 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 search_array = [
-    "apple", "microsoft", "google", "amazon", "facebook", "netflix", "salesforce", "nvidia", "volkswagen", "tesla", 
-    "Canadian news", "Top stories", "Canada", "World", "Entertainment", "Sci/Tech", "Business", "Politics", "Sports", "Lifestyle",
+    "apple", "microsoft", "google", "amazon", "facebook", "netflix", "nvidia", "amd", "salesforce", "tesla", "volkswagen",
+    "Canadian news", "Top stories", "Canada", "World", "Sci/Tech", "Business", "Politics", "Sports",
     "stock", "ubuntu", "system76", "raspberry pi", "arduino", "sony", "nikon", "logitech", "hello world", "Hong Kong"
 ]
 SEARCH_BAR_ELEMENT_ID = "sb_form_q"
