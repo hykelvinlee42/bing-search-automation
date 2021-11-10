@@ -1,23 +1,40 @@
 # bing-search-automation
-This Python automation tool uses Selenium for completing the Microsoft Rewards daily challenge. Tool has two version, one for Chrome browser in Linux(Ubuntu) and the other one for Windows Edge browser
-## Getting Started
-### Prerequisites - linux-chrome
-```
-google-chrome --version
->> Google Chrome 84.0.4147.125
-python --version
->> Python 3.8.2
-```
-If your chrome version is different from above, please download and replace the chromedriver accordingly.
-https://sites.google.com/a/chromium.org/chromedriver/home
-### Prerequisites - win-edge
-Check edge browser version by entering edge://version in the browser search bar.
-![edge_version](win-edge/version.png)
+This Python (3.8) automation tool uses Selenium for completing the Microsoft Rewards daily challenge.
 
-In this case, the edge browser version is 84.0.522.59
+## Getting Started
+### Prerequisites
+
+Download the right version browser driver for your [chrome browser](https://sites.google.com/a/chromium.org/chromedriver/home) or [edge browser](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/).  
+
+Then install the Selenium library,
+
 ```
-python --version
->> Python 3.8.5
+pip install selenium==4.0.0
 ```
-If your edge version is different from above, please download and replace the msedgedriver.exe accordingly.
-https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+
+### Windows Edge Specific Instructions
+#### Creating Essential PROFILE_PATH File
+
+Create an empty text file and name it as `PROFILE_PATH` (without extension name).  
+
+![profile_path](./screenshots/path.png)
+
+Copy and paste profile path to the `PROFILE_PATH` file. Then separate the profile path in two lines. `C:\Users\uname\AppData\Local\Microsoft\Edge\User Data\` prefix on the first line and whatever comes after on the second line as shown in the screenshot above.
+
+### Running
+#### General
+```
+python bing.py
+```
+
+To prevent generating python compilation code
+
+```
+python -B bing.py
+```
+
+#### Windows Edge
+```
+run.bat
+```
+or double clicking the `run.bat` batch file
