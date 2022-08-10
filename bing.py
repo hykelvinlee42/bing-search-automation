@@ -7,11 +7,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import platform
 import time
+from datetime import date
 
 search_array = [
-    "apple", "microsoft", "google", "amazon", "facebook", "netflix", "salesforce", "nvidia", "volkswagen", "tesla", 
-    "Canadian news", "Top stories", "Canada", "World", "Entertainment", "Sci/Tech", "Business", "Politics", "Sports", "Lifestyle",
-    "stock", "ubuntu", "system76", "raspberry pi", "arduino", "sony", "nikon", "logitech", "hello world", "Hong Kong"
+    "apple", "microsoft", "google", "amazon", "nvidia",
+    "stock", "NASDAQ: AAPL", "TSE: ENB", "TSE: RNW", "NASDAQ: NVDA", "TSE: SHOP", "TSE: BNS", "TSE: BMO", "NYSE: QBTS",
+    "Canadian news", "Top stories", "Canada", "World", "Entertainment", "Sci/Tech", "Business", "Politics", "Sports",
+    "ubuntu", "raspberry pi", "arduino", "python", "hello world", "Hong Kong"
 ]
 SEARCH_BAR_ELEMENT_ID = "sb_form_q"
 
@@ -79,6 +81,7 @@ def main():
         open_tabs(browser)
         elapsed_time = time.time() - start_time
         print("Search Completed in " + str(elapsed_time) + "s. Script ends.")
+        print("Script ran on {0}".format(date.today().isoformat()))
     else:
         print("Script ends.")
 
