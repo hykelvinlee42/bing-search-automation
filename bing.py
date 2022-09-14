@@ -9,13 +9,15 @@ import platform
 import time
 from datetime import date
 
-search_array = [
-    "apple", "microsoft", "google", "amazon", "nvidia",
-    "stock", "NASDAQ: AAPL", "TSE: ENB", "TSE: RNW", "NASDAQ: NVDA", "TSE: SHOP", "TSE: BNS", "TSE: BMO", "NYSE: QBTS",
-    "Canadian news", "Top stories", "Canada", "World", "Entertainment", "Sci/Tech", "Business", "Politics", "Sports",
-    "ubuntu", "raspberry pi", "arduino", "python", "hello world", "Hong Kong"
-]
+search_array = []
 SEARCH_BAR_ELEMENT_ID = "sb_form_q"
+
+
+def load_search_array(filename="search_key"):
+    global search_array
+    file = open(filename, "r")
+    search_array = [line.strip() for line in file.readlines()]
+    file.close()
 
 
 def search(driver, key):
@@ -40,6 +42,7 @@ def open_tabs(driver):
 
 
 def main():
+    load_search_array()
     start_time = time.time()
     if platform.system() == "Linux":
         chrome_options = ChromeOptions()
@@ -67,14 +70,18 @@ def main():
         return
 
     # Wait for manual login
-    print(" _                 _      ___     __         __  __  ")
-    print("| |               (_)    |__ \   / /        / /  \ \ ")
-    print("| |     ___   __ _ _ _ __   ) | | |_   _   / / __ | |")
-    print("| |    / _ \ / _` | | '_ \ / /  | | | | | / / '_ \| |")
-    print("| |___| (_) | (_| | | | | |_|   | | |_| |/ /| | | | |")
-    print("|______\___/ \__, |_|_| |_(_)   | |\__, /_/ |_| |_| |")
-    print("              __/ |              \_\__/ |        /_/")   
-    print("             |___/                 |___/            ")
+    print(
+        """
+         _                 _      ___     __         __  __  
+        | |               (_)    |__ \   / /        / /  \ \ 
+        | |     ___   __ _ _ _ __   ) | | |_   _   / / __ | |
+        | |    / _ \ / _` | | '_ \ / /  | | | | | / / '_ \| |
+        | |___| (_) | (_| | | | | |_|   | | |_| |/ /| | | | |
+        |______\___/ \__, |_|_| |_(_)   | |\__, /_/ |_| |_| |
+                      __/ |              \_\__/ |        /_/
+                     |___/                 |___/                                  
+        """
+    )
     print("Login? (y/n)")
     cmd = input()
     if cmd == "y" or cmd == "Y":

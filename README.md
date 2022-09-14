@@ -12,6 +12,9 @@ Then install the Selenium library,
 pip install selenium==4.0.0
 ```
 
+#### Creating Essential search_key File
+Create a `search_key` file which contains all the keywords (separated by newline) you want to search.
+
 ### Windows Edge Specific Instructions
 #### Creating Essential PROFILE_PATH File
 
@@ -25,12 +28,6 @@ Copy and paste profile path to the `PROFILE_PATH` file. Then separate the profil
 #### General
 ```
 python bing.py
-```
-
-To prevent generating python compilation code
-
-```
-python -B bing.py
 ```
 
 #### Windows Edge
