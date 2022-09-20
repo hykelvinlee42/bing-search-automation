@@ -1,3 +1,5 @@
 env/
 PROFILE_PATH
-search_key
+search_keys
+passcode
+private_key
