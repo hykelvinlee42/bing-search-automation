@@ -6,14 +6,21 @@ This Python (3.8) automation tool uses Selenium for completing the Microsoft Rew
 
 Download the right version browser driver for your [chrome browser](https://sites.google.com/a/chromium.org/chromedriver/home) or [edge browser](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/).  
 
-Then install the Selenium library,
+Then install the Selenium and other required libraries,
 
 ```
 pip install selenium==4.0.0
+pip install rsa==4.9
 ```
 
 #### Creating Essential search_key File
 Create a `search_key` file which contains all the keywords (separated by newline) you want to search.
+
+#### Creating and Encrypt Login Credential File
+```
+python helpers/encrypt_pw.py
+```
+Running the command above will ask for the login passcode you want to encrypt and then generate two files, `passcode` and `private_key`. These two files are used in `bing.py` for auto login.
 
 ### Windows Edge Specific Instructions
 #### Creating Essential PROFILE_PATH File
