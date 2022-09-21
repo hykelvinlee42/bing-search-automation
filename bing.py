@@ -18,7 +18,7 @@ def load_search_array(filename="./search_keys"):
     file.close()
 
 
-def login(driver):
+def login(driver, acc):
     driver.get("https://www.bing.com/news/")
     time.sleep(2)
 
@@ -27,7 +27,10 @@ def login(driver):
     time.sleep(2)
 
     email_input = driver.find_element(By.NAME, Elements.LOGIN_BAR_ELEMENT_NAME)
-    email_input.send_keys(input("Account: "))
+    if not acc:
+        acc = input("Account: ")
+
+    email_input.send_keys(acc)
     email_input.send_keys(Keys.ENTER)
 
     time.sleep(2)
@@ -65,6 +68,7 @@ def open_tabs_for_search(driver):
 
 def usages():
     parser = argparse.ArgumentParser(description="Automation script to complete Microsoft Rewards - Bing search daily challenge")
+    parser.add_argument('-u', nargs=1, help="prefill username for auto login")
     args = parser.parse_args()
     return vars(args)
 
@@ -78,7 +82,7 @@ def main():
 
     if platform.system() == "Linux": 
         browser = BrowserHelpers.get_linux_chrome()
-        is_login = login(browser)
+        is_login = login(browser, args["u"])
     elif platform.system() == "Windows":
         browser = BrowserHelpers.get_wins_edge()
         is_login = True
