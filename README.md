@@ -42,3 +42,16 @@ python bing.py
 run.bat
 ```
 or double clicking the `run.bat` batch file
+
+## Script Options
+```
+usage: bing.py [-h] [-u U] [--headless | --no-headless]
+
+Automation script to complete Microsoft Rewards - Bing search daily challenge
+
+options:
+  -h, --help            show this help message and exit
+  -u U                  prefill username for auto login
+  --headless, --no-headless
+                        toggle to run chrome in headless mode
+```
