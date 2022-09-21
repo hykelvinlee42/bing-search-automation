@@ -4,8 +4,11 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver import Chrome, Edge
 
-def get_linux_chrome(driver="./chromedriver"):
+def get_linux_chrome(driver="./chromedriver", is_headless=False):
     chrome_options = ChromeOptions()
+    if is_headless:
+        chrome_options.add_argument("--headless")
+
     chrome_options.add_argument("--incognito")
     chrome_options.add_experimental_option("detach", True) # Keep browser open after the program finishes running
 

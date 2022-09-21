@@ -42,6 +42,7 @@ def login(driver, acc):
         submit_btn = driver.find_element(By.ID, Elements.LOGIN_SUBMIT_BTN_ELEMENT_ID)
         submit_btn.submit()
     
+    WebDriverWait(driver, 10).until(EC.title_contains("Bing News"))
     return True
 
 
@@ -68,6 +69,7 @@ def open_tabs_for_search(driver):
 def usages():
     parser = argparse.ArgumentParser(description="Automation script to complete Microsoft Rewards - Bing search daily challenge")
     parser.add_argument('-u', nargs=1, help="prefill username for auto login")
+    parser.add_argument("--headless", action=argparse.BooleanOptionalAction, help="toggle to run chrome in headless mode")
     args = parser.parse_args()
     return vars(args)
 
@@ -80,13 +82,14 @@ def main():
     start_time = time.time()
 
     if platform.system() == "Linux": 
-        browser = BrowserHelpers.get_linux_chrome()
+        browser = BrowserHelpers.get_linux_chrome(is_headless=args["headless"])
         is_login = login(browser, args["u"])
     elif platform.system() == "Windows":
         browser = BrowserHelpers.get_wins_edge()
         is_login = True
     
-    browser.get("https://account.microsoft.com/rewards/")
+    if not args["headless"]:
+        browser.get("https://account.microsoft.com/rewards/")
 
     if is_login:
         open_tabs_for_search(browser)
