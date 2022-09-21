@@ -4,6 +4,8 @@ import platform
 from datetime import date
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import helpers.elements as Elements
 import helpers.browsers as BrowserHelpers
 from helpers.decrypt import get_passcode
@@ -24,17 +26,15 @@ def login(driver, acc):
 
     login_form = driver.find_element(By.NAME, Elements.LOGIN_BTN_ELEMENT_NAME)
     login_form.click()
-    time.sleep(2)
 
-    email_input = driver.find_element(By.NAME, Elements.LOGIN_BAR_ELEMENT_NAME)
+    email_input = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.NAME, Elements.LOGIN_BAR_ELEMENT_NAME)))
     if not acc:
         acc = input("Account: ")
 
     email_input.send_keys(acc)
     email_input.send_keys(Keys.ENTER)
 
-    time.sleep(2)
-    password_input = driver.find_element(By.NAME, Elements.LOGIN_PASSWORD_INPUT_ELEMENT_NAME)
+    password_input = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.NAME, Elements.LOGIN_PASSWORD_INPUT_ELEMENT_NAME)))
     password_input.send_keys(get_passcode())
 
     for _i in range(2): # repeat one more time for confirming stay login
@@ -47,11 +47,10 @@ def login(driver, acc):
 
 def search(driver, key):
     print("Seaching " + key + "...")
-    search_bar = driver.find_element(By.ID, Elements.SEARCH_BAR_ELEMENT_ID)
+    search_bar = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, Elements.SEARCH_BAR_ELEMENT_ID)))
     search_bar.send_keys(key)
-    time.sleep(2)
     search_bar.send_keys(Keys.ENTER)
-    time.sleep(4)
+    time.sleep(3)
 
 
 def open_tabs_for_search(driver):
