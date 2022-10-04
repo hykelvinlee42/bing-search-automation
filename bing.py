@@ -82,8 +82,11 @@ def main():
     start_time = time.time()
 
     if platform.system() == "Linux": 
-        browser = BrowserHelpers.get_linux_chrome(is_headless=args["headless"])
+        browser = BrowserHelpers.get_unix_chrome(is_headless=args["headless"])
         is_login = login(browser, args["u"])
+    elif platform.system() == "Darwin":
+        browser = BrowserHelpers.get_unix_chrome(is_headless=args["headless"])
+        is_login = login(browser, args["u"]) 
     elif platform.system() == "Windows":
         browser = BrowserHelpers.get_wins_edge()
         is_login = True
